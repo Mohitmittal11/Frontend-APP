@@ -1,0 +1,109 @@
+body {
+   margin: 0px;
+   padding: 0px;
+}
+
+.main-container h2 {
+   text-align: center;
+}
+
+.form-container {
+   height: fit-content;
+   width: 450px;
+   margin: 60px auto;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   padding: 20px 15px;
+   background-color: whitesmoke;
+}
+
+.form-container .inputfield {
+   display: block;
+   height: 32px;
+   width: 100%;
+   text-indent: 15px;
+   margin-top: 20px;
+   border: 1px solid gray;
+   border-radius: 10px;
+}
+
+.inputfield::placeholder {
+   font-size: 14px;
+   font-style: italic;
+   font-weight: 500;
+}
+
+.inputfield:focus {
+   outline: none;
+}
+
+.status {
+   margin: 5px 0px;
+}
+
+.status input {
+   height: 14px;
+   width: 14px;
+}
+
+.imageUpload {
+   margin-top: 20px;
+}
+
+.imageUpload label {
+   display: block;
+   margin: 10px 0px;
+   font-size: 18px;
+}
+
+
+.imageUpload input {
+   font-size: 14px;
+   /* padding: 10px 10px; */
+}
+
+.main-status {
+   margin-top: 20px;
+}
+
+.main-status label {
+   font-size: 18px;
+}
+
+.status label {
+   font-size: 17px;
+   margin-left: 5px;
+}
+
+.para {
+   color: red;
+}
+
+.submitBtn {
+   display: block;
+   width: 100%;
+   margin-top: 20px;
+   height: 32px;
+   font-size: 16px;
+   font-weight: 550;
+   color: white;
+   background-color: rgb(52, 86, 235);
+   letter-spacing: 1px;
+   border: none;
+   cursor: pointer;
+}
+#loadingid {
+   display: none;
+   color: green;
+   text-align: center;
+   font-size: 22px;
+}
+.removeImage {
+   display: none;
+   color: red;
+   float: right;
+   margin-right: 50px;
+   font-size: 18px;
+   cursor: pointer;
+   font-weight: 600;
+ 
+}

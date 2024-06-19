@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul,
+li {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0px 0px;
+    background-color: rgb(52, 86, 235);
+    /* background-color: green; */
+}
+
+.list {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 520;
+    letter-spacing: 1px;
+}
+
+
+/* .active {
+    text-decoration: underline;
+} */

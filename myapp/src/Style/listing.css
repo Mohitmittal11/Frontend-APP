@@ -1,0 +1,41 @@
+
+table {
+    width: 100%;
+}
+.maincontainer h2 {
+    text-align: center;
+}
+img {
+    height: 100px;
+    width: 150px;
+}
+tr,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.changeBtn {
+    background-color: rgb(50, 125, 168);
+    padding: 5px 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 550;
+    margin:0px 8px;
+    border: none;
+    cursor: pointer;
+}
+.pagination  {
+    display: flex;
+    justify-content: center;
+    
+}
+.pagination p {
+    padding: 5px 10px;
+    background-color:rgb(50, 125, 168) ;
+    color: white;
+    margin: 20px 5px;
+    cursor: pointer;
+}
