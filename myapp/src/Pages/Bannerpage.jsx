@@ -1,102 +1,62 @@
 import React, { useState } from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Style/bannerpage.css";
 import axios from "axios";
-// import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Bannerpage = () => {
   const navigate = useNavigate();
-  const [formdata, setformData] = useState({
-    title: "",
-    position: null,
-    status: "",
-    image: "",
-  });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const [imageUrl, setImageUrl] = useState("");
-  const [image, setImage] = useState("");
-  // const [error, setError] = useState(true);
-  const [titleerror, settitleError] = useState("");
-  const [positionError, setpositionError] = useState("");
 
-  const [statuserror, setStatusError] = useState();
-
-  const handleChange = (e) => {
-    const fileData = e.target.value;
-    console.log("File Data is ", fileData);
-    if (fileData) {
-      setImage(fileData);
-      document.getElementById("removeImageData").style.display = "inline";
-    }
-    const imageValue = e.target.files[0];
-    var reader = new FileReader();
-    reader.onloadend = function () {
-      setImageUrl(reader.result);
-    };
-    reader.readAsDataURL(imageValue);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!formdata?.title) {
-      settitleError("*Please Fill Title Field");
-      return false;
-    }
-    if (!formdata?.position) {
-      setpositionError("*Please Fill Position");
-      return false;
-    }
-
-    if (positionError || titleerror) {
-      return false;
-    }
-   
-
-    const statusValue = document.querySelector(
-      "input[type=radio][name=status]:checked"
-    )?.value;
-
-    if (!statusValue) {
-      setStatusError("Please Choose one Option");
-      return false;
-    }
-    formdata.status = statusValue;
-    formdata.image = imageUrl;
-
-    console.log(formdata);
-
-    if (formdata?.title && formdata?.position) {
-      toast.success("form submitted successfully", {
-        position: "top-center",
-      });
-      document.getElementById("loadingid").style.display = "block";
-    }
-
-    const response = await axios.post("https://ro-kart-slg1.onrender.com/insertData", {
-      data: formdata,
-    });
-    if (response.status === 200) {
-      navigate("/listing");
-    }
-  };
+  const [activebutton, setActiveButton] = useState(false);
 
   const handleImage = (e) => {
     e.preventDefault();
-    if (image) {
+    if (imageUrl) {
       document.getElementById("imageid").value = "";
       document.getElementById("removeImageData").style.display = "none";
     }
   };
 
+  const onFormSubmit = async (data) => {
+    setActiveButton(true);
+
+    data = { ...data, image: imageUrl };
+    if (data) {
+      console.log("Data is ", data);
+    }
+
+    const response = await axios.post(
+      `${process.env.REACT_APP_URL}/insertData`,
+      {
+        data: data,
+      }
+    );
+    if (response.status === 200) {
+      toast.success("form submitted successfully", {
+        position: "top-center",
+      });
+      setTimeout(() => {
+        navigate("/listing");
+      }, 2000);
+    }
+  };
+
   return (
     <div className="main-container">
-      <p id="loadingid">Loading...</p>
       <h2>Banner Page</h2>
+
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className="title">
             <input
               className="inputfield"
@@ -105,26 +65,22 @@ const Bannerpage = () => {
               id="title_id"
               placeholder="Enter title"
               onKeyDown={(event) => {
-                if (event.code === "Space") {
+                if (event.code === "Space" && event.target.value === "") {
                   event.preventDefault();
                 }
               }}
-              onChange={(e) => {
-                const regex = /^[a-zA-Z][a-zA-Z0-9]*$/g;
-                const isTrue = regex.test(e.target.value);
-                setformData({ ...formdata, title: e.target.value });
-                if (!e.target.value) {
-                  settitleError("*Please Fill Title");
-                } else if (!isTrue) {
-                  settitleError(
-                    "*Numeric at First Place and Special Number is not allowed"
-                  );
-                } else {
-                  settitleError(null);
-                }
-              }}
+              {...register("title", {
+                required: "Title is Required",
+                pattern: {
+                  value: /^[a-zA-Z][a-zA-Z0-9]*$/g,
+                  message: "Please fill Only Characters",
+                },
+              })}
             />
-            {titleerror && <p className="para">{titleerror}</p>}
+            <p className="para">
+              {" "}
+              {errors?.title?.message && errors.title.message}
+            </p>
           </div>
           <div className="position">
             <input
@@ -138,23 +94,17 @@ const Bannerpage = () => {
                   event.preventDefault();
                 }
               }}
-              onChange={(e) => {
-                const regex = /[^0-9]/g;
-                const isTrue = regex.test(e.target.value);
-                setformData({
-                  ...formdata,
-                  position: e.target.value,
-                });
-                if (!e.target.value) {
-                  setpositionError("*Please Fill Position");
-                } else if (isTrue) {
-                  setpositionError("Please Fill only Numbers");
-                } else {
-                  setpositionError(null);
-                }
-              }}
+              {...register("position", {
+                required: "Position is Required",
+                pattern: {
+                  value: /[0-9]/g,
+                  message: "Please Fill only Numbers",
+                },
+              })}
             />
-            {positionError && <p className="para">{positionError}</p>}
+            <p className="para">
+              {errors?.position?.message && errors.position.message}
+            </p>
           </div>
 
           <div className="main-status">
@@ -162,12 +112,9 @@ const Bannerpage = () => {
 
             <div className="status">
               <input
-                onChange={(e) => {
-                  if (e.target.value) {
-                    console.log(e.target.value);
-                    setStatusError(null);
-                  }
-                }}
+                {...register("status", {
+                  required: "Please Choose one Option",
+                })}
                 type="radio"
                 id="active"
                 value={"Active"}
@@ -178,12 +125,9 @@ const Bannerpage = () => {
 
             <div className="status">
               <input
-                onChange={(e) => {
-                  if (e.target.value) {
-                    console.log(e.target.value);
-                    setStatusError(null);
-                  }
-                }}
+                {...register("status", {
+                  required: "Please Choose one Option",
+                })}
                 type="radio"
                 id="inactive"
                 value={"InActive"}
@@ -191,19 +135,36 @@ const Bannerpage = () => {
               />
               <label for="inactive">inActive</label>
             </div>
-            {statuserror && <p className="para">{statuserror}</p>}
+            <p className="para">
+              {errors?.status?.message && errors.status.message}
+            </p>
           </div>
 
           <div className="imageUpload">
             <label for="imageid">Upload Image</label>
             <input
-              onChange={handleChange}
               type="file"
               id="imageid"
               name="image"
               accept="image/*"
-              required
+              {...register("image", {
+                required: "Image is Required",
+                onChange: (e) => {
+                  const imageValue = e.target.files[0];
+                  const reader = new FileReader();
+                  reader.onloadend = function () {
+                    setImageUrl(reader.result);
+                    if (reader.result) {
+                      document.getElementById("removeImageData").style.display =
+                        "block";
+                    }
+                  };
+                  reader.readAsDataURL(imageValue);
+                },
+              })}
             />
+            <p className="para">{errors?.image?.message}</p>
+            <></>
             <span
               onClick={handleImage}
               id="removeImageData"
@@ -213,7 +174,9 @@ const Bannerpage = () => {
             </span>
           </div>
 
-          <button className="submitBtn">SUBMIT</button>
+          <button className="submitBtn">
+            {!activebutton ? "SUBMIT" : "LOADING..."}
+          </button>
           <ToastContainer />
         </form>
       </div>

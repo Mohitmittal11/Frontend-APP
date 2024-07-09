@@ -1,0 +1,145 @@
+body {
+   margin: 0px;
+   padding: 0px;
+}
+
+.main-subscription-container h1 {
+   text-align: center;
+}
+
+.formcontainer {
+   height: fit-content;
+   width: 80%;
+   margin: 20px auto;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   padding: 20px 25px;
+   background-color: whitesmoke;
+}
+
+label {
+   font-size: 18px;
+}
+
+.input_image input {
+
+   display: block;
+   margin-top: 10px;
+   font-size: 14px;
+}
+
+.membership {
+   margin: 15px 0px;
+}
+
+.membership_time_Type {
+   display: block;
+   margin: 5px 0px;
+}
+
+
+.membership_time_Type label {
+   margin-left: 8px;
+}
+
+.membership_Type {
+   margin: 5px 0px;
+}
+
+.membership_Type label {
+   margin-left: 8px;
+}
+
+.facilities {
+   margin: 10px 0px;
+}
+
+.facility {
+   margin-top: 5px;
+}
+
+.facility label {
+   margin-left: 8px;
+}
+
+.refundable {
+   margin: 5px 0px
+}
+
+.refundable label {
+   margin-left: 8px;
+}
+
+.textData {
+   display: block;
+   width: 100%;
+   height: 30px;
+   margin-top: 8px;
+   margin-bottom: 12px;
+}
+
+.textInputData {
+   margin: 10px 0px;
+}
+
+.checkStatus {
+   margin: 5px 0px;
+}
+
+.checkStatus label {
+   margin-left: 8px;
+}
+
+#subscription-btn {
+   margin-top: 10px;
+   width: 100%;
+   padding: 8px 0px;
+   font-size: 18px;
+   font-weight: 600;
+   letter-spacing: 1px;
+   color: white;
+   background-color: rgb(52, 86, 235);
+   cursor: pointer;
+   border: none;
+}
+
+.textData {
+   text-indent: 10px;
+   font-style: italic;
+   border-radius: 10px;
+   border: 1px solid gray;
+}
+
+.textData:focus {
+   outline: none;
+}
+
+.textData::placeholder {
+   color: gray;
+   font-size: 14px;
+}
+
+p {
+   color: red;
+   text-align: left;
+}
+
+.removeImage1 {
+   display: none;
+   color: red;
+   font-weight: 600;
+   font-size: 18px;
+   float: right;
+   margin-right: 20px;
+   cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+   .formcontainer {
+      width: 90%;
+   }
+}
+@media screen and (max-width: 768px) and (min-width: 425px) {
+   .formcontainer {
+      width: 85%;
+   }
+}

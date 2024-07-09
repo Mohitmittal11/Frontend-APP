@@ -3,26 +3,63 @@ body {
     padding: 0;
 }
 
+.navigation {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(174, 178, 197);
+    overflow-x: hidden;
+    transition: 0.5s;
+
+}
+
 .navigation ul,
 li {
-    display: flex;
-    justify-content: flex-end;
     list-style-type: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin: 0px 0px;
-    background-color: rgb(52, 86, 235);
-    /* background-color: green; */
+    text-wrap: nowrap;
+}
+
+.active {
+    color: red;
+    font-style: italic;
 }
 
 .list {
     text-decoration: none;
-    color: white;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 520;
     letter-spacing: 1px;
+
 }
 
+#closeNavbar {
+    text-align: end;
+    color: black;
+    font-weight: 550;
+    font-size: 22px;
+    margin-right: 25px;
+    cursor: pointer;
+}
 
-/* .active {
-    text-decoration: underline;
-} */
+.menu {
+    background-color: black;
+    width: 30px;
+    height: 6px;
+    margin: 4px 10px;
+
+}
+
+.menutext {
+    font-size: 20px;
+}
+
+#navopenMenu {
+    cursor: pointer;
+    display: flex;
+    margin: 10px 10px;
+}

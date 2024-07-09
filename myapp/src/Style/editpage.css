@@ -1,101 +1,120 @@
 body {
-    margin: 0px;
-    padding: 0px;
- }
+   margin: 0px;
+   padding: 0px;
+}
 
- 
- .form-container {
-    height: fit-content;
-    width: 600px;
-    margin: 60px auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 20px 15px;
-    background-color: rgb(215, 219, 215);
- }
- 
- .form-container .inputfield {
-    display: block;
-    height: 34px;
-    width: 100%;
-    text-indent: 15px;
-    margin-top: 25px;
-    border: 1px solid gray;
-    border-radius: 10px;
- }
- 
- .inputfield::placeholder {
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 500;
- }
- 
- .inputfield:focus {
-    outline: none;
- }
- 
- .status {
-    margin: 8px 0px;
- }
- 
- .status input {
-    height: 14px;
-    width: 14px;
- }
- span {
-    margin-top: 10px;
- }
- 
- .imageUpload {
-    margin-top: 30px;
- }
- 
- .imageUpload label {
-    display: block;
-    margin: 15px 0px;
-    font-size: 18px;
- }
- 
- .imageUpload input {
-    font-size: 14px;
-    /* padding: 10px 10px; */
- }
- 
- .main-status {
-    margin-top: 20px;
- }
- 
- .main-status label {
-    font-size: 18px;
- }
- 
- .status label {
-    font-size: 17px;
-    margin-left: 5px;
- }
- .editsubmitBtn {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    height: 32px;
-    font-size: 16px;
-    font-weight: 550;
-    color: white;
-    background-color: rgb(52, 86, 235);
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
- }
- img {
+
+.maincontainer .form-container {
+   height: fit-content;
+   width: 70%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   padding: 20px 15px;
+   background-color: rgb(215, 219, 215);
+}
+
+.maincontainer .form-container .inputfield {
+   display: block;
+   height: 34px;
+   width: 100%;
+   text-indent: 15px;
+   margin-top: 25px;
+   border: 1px solid gray;
+   border-radius: 10px;
+}
+
+.maincontainer .inputfield::placeholder {
+   font-size: 14px;
+   font-style: italic;
+   font-weight: 500;
+}
+
+.maincontainer .inputfield:focus {
+   outline: none;
+}
+
+.maincontainer.status {
+   margin: 8px 0px;
+}
+
+.maincontainer .status input {
+   height: 14px;
+   width: 14px;
+}
+
+.maincontainer span {
+   margin-top: 10px;
+}
+
+.maincontainer .imageUpload {
+   margin-top: 30px;
+}
+
+.maincontainer .imageUpload label {
+   display: block;
+   margin: 15px 0px;
+   font-size: 18px;
+}
+
+.maincontainer .imageUpload input {
+   font-size: 14px;
+   /* padding: 10px 10px; */
+}
+
+.maincontainer .main-status {
+   margin-top: 20px;
+}
+
+.maincontainer .main-status label {
+   font-size: 18px;
+}
+
+.maincontainer .status label {
+   font-size: 17px;
+   margin-left: 5px;
+}
+
+.maincontainer .editsubmitBtn {
+   display: block;
+   width: 100%;
+   margin-top: 20px;
+   height: 32px;
+   font-size: 16px;
+   font-weight: 550;
+   color: white;
+   background-color: rgb(52, 86, 235);
+   letter-spacing: 1px;
+   border: none;
+   cursor: pointer;
+}
+
+.maincontainer img {
    height: 80px;
    width: 80px;
    border-radius: 50%;
- }
- .errorPara {
+}
+
+.maincontainer .errorPara {
    color: red;
- }
-#loadingdataid {
-      display: none;
-      color: green;
-      text-align: center;
-      font-size: 22px;
+}
+
+.maincontainer #loadingdataid {
+   display: none;
+   color: green;
+   text-align: center;
+   font-size: 22px;
+}
+
+@media screen and (max-width: 1024px) {
+   .maincontainer .form-container {
+      width: 90%;
+
+   }
+
+}
+
+@media screen and (max-width: 425px) {
+
+   .maincontainer .form-container {
+      width: 85%;
+   }
 }

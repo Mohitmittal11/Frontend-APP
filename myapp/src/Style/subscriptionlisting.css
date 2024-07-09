@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.subscriptionListing table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.subscriptionListing th {
+    border: 1px solid black;
+
+    padding: 15px 10px;
+}
+
+.subscriptionListing td {
+    border: 1px solid black;
+
+    padding: 10px 8px;
+}
+
+.subscriptionListing .facilitiesData {
+    padding: 0px 5px;
+    color: black;
+}
+
+.subscriptionListing h2 {
+    text-align: center;
+}
+
+.subscriptionListing img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.subscriptionListing .changebtn {
+    background-color: rgb(52, 86, 235);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 550;
+}
+
+.subscriptionListing .datafound {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+
+.subscriptionListing .paginationdata {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.subscriptionListing .subscriptionpagination {
+    background-color: green;
+}
+
+.subscriptionListing .setcolor {
+    background-color: blue;
+}
+
+.subscriptionListing .preSubscription {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.subscriptionListing .preSubscription:active {
+    background-color: rgb(122, 80, 28);
+
+}
+
+.subscriptionListing .nextSubscription:active {
+    background-color: rgb(122, 80, 28);
+
+}
+
+.subscriptionListing .dotSubscription {
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+.subscriptionListing .nextSubscription {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+    .subscriptionListing table {
+        width: 100%;
+        display: block;
+    }
+
+    .subscriptionListing .listingContainer {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+
+
+}
+
+@media screen and (max-width: 768px) and (min-width: 425px) {
+
+    .subscriptionListing .paginationdata {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .subscriptionListing .paginationdata {
+        font-size: 12px;
+        margin: 20px 5px;
+        padding: 5px 12px;
+    }
+
+}

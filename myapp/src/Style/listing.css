@@ -1,21 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 
-table {
+.maincontainerofbanner {
+    padding: 0px 10px;
+}
+
+.maincontainerofbanner table {
+    border-collapse: collapse;
     width: 100%;
 }
-.maincontainer h2 {
+
+.maincontainerofbanner h2 {
     text-align: center;
 }
-img {
+
+.maincontainerofbanner img {
     height: 100px;
     width: 150px;
 }
-tr,th,td {
+
+.maincontainerofbanner td {
     border: 1px solid black;
-    border-collapse: collapse;
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
+    padding: 5px 5px;
 }
 
+.maincontainerofbanner th {
+    padding: 15px 10px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 22px;
+}
+
+.maincontainerofbanner .selectStatus {
+    font-size: 16px;
+    padding: 3px 8px;
+    background-color: rgb(50, 125, 168);
+    color: white;
+}
+
+.maincontainerofbanner .selectStatus:focus {
+    outline: none;
+}
 
 .changeBtn {
     background-color: rgb(50, 125, 168);
@@ -23,19 +52,92 @@ tr,th,td {
     color: white;
     font-size: 15px;
     font-weight: 550;
-    margin:0px 8px;
+    margin: 0px 8px;
     border: none;
     cursor: pointer;
 }
-.pagination  {
-    display: flex;
-    justify-content: center;
-    
-}
-.pagination p {
-    padding: 5px 10px;
-    background-color:rgb(50, 125, 168) ;
-    color: white;
-    margin: 20px 5px;
+
+.pagination1 {
+    text-align: center;
+    margin-top: 20px;
+
+    padding: 5px 15px;
     cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: 550;
+    text-wrap: wrap;
+}
+
+.dot {
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.previous {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.pagination1,
+.previous,
+.next {
+    margin: 20px 15px;
+}
+
+.next {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.previous:active {
+
+    background-color: rgb(122, 80, 28);
+}
+
+.next:active {
+
+    background-color: rgb(122, 80, 28);
+}
+
+.listing_pagination {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+@media screen and (max-width: 768px) {
+
+
+    .maincontainerofbanner .listbanner {
+        overflow-x: auto;
+    }
+
+    .pagination1 {
+        margin: 20px 6px;
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 425px) and (min-width: 320px) {
+
+    .pagination1 {
+        margin: 20px 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .next,
+    .previous {
+        padding: 5px 5px;
+        margin: 20px 5px;
+    }
 }

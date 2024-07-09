@@ -1,0 +1,142 @@
+/* .main-listing table {
+    table-layout: fixed;
+} */
+
+.testiminialDatalisting {
+    display: block;
+    overflow-x: auto;
+}
+
+.testiminialDatalisting table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.testiminialDatalisting td,
+th {
+
+    border: 1px solid black;
+    padding: 20px 20px;
+    text-align: center;
+    text-wrap: wrap;
+    letter-spacing: 1px;
+
+    font-size: 18px;
+}
+
+
+.main-listing .description {
+    color: blue;
+    text-align: left;
+    width: 300px;
+    letter-spacing: normal;
+}
+
+.main-listing .testimoniallistingbtn {
+    background-color: rgb(43, 114, 228);
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 5px 5px;
+    cursor: pointer;
+    margin: 10px 10px;
+    font-weight: 600;
+}
+
+
+.pagination {
+    margin: 20px 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: 550;
+    text-align: center;
+}
+
+.pagination .previousdata {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.pagination .previousdata:active {
+    background-color: rgb(122, 80, 28);
+}
+
+.pagination .nextdata:active {
+    background-color: rgb(122, 80, 28);
+
+}
+
+.pagination .nextdata {
+    background-color: rgb(124, 97, 168);
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 15px
+}
+
+
+.main-listing .selectStatus {
+    padding: 5px 5px;
+    background-color: rgb(114, 114, 238);
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 550;
+    outline: none;
+}
+
+.pagination .testimonialsdot {
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.pagination .testimonial_pagination {
+    background-color: green;
+}
+
+.pagination .blue {
+    background-color: blue;
+}
+
+@media screen and (max-width: 525px) and (min-width: 375px) {
+    .pagination {
+        margin: 20px 8px;
+        font-size: 14px;
+    }
+
+    .pagination .nextdata {
+        margin-left: 10px;
+    }
+
+    .pagination .previousdata {
+        margin-right: 8px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .pagination {
+        margin: 20px 8px;
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .pagination .nextdata {
+        margin-left: 10px;
+        padding: 6px 6px;
+    }
+
+    .pagination .previousdata {
+        margin-right: 8px;
+        padding: 6px 6px;
+
+    }
+
+}

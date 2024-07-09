@@ -1,0 +1,228 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.subscription-container {
+    padding: 0px 10px;
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    row-gap: 20px;
+}
+
+.main-image-data {
+    height: 470px;
+    width: 360px;
+    background-color: rgb(66, 65, 63);
+    border-radius: 20px;
+    padding: 12px 12px;
+
+}
+
+.imageData {
+    width: 90%;
+    height: 250px;
+    margin: auto;
+}
+
+#imageshow {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.info-container {
+    background-color: black;
+    height: 155px;
+    width: 99%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+}
+
+.info-container h2 {
+    text-align: left;
+    font-size: 18px;
+    color: whitesmoke;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.mrp {
+    color: whitesmoke;
+    font-weight: 550;
+    margin-left: 10px;
+}
+
+.refundabledata {
+    color: whitesmoke;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.facilitiedData {
+    display: inline;
+    padding-right: 8px;
+    color: whitesmoke;
+    margin-left: 10px;
+}
+
+/* .underlined-container {
+    padding: 0px 10px;  
+    
+} */
+.underlined-container {
+    border-bottom: 1px solid whitesmoke;
+    border-width: 2px;
+    padding-top: 10px;
+    margin: 0px 10px;
+
+
+}
+
+.subscribe {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 550;
+    letter-spacing: 2px;
+    margin-left: 10px;
+}
+
+.paginatedlist {
+    margin: 30px 0px;
+    text-align: center;
+
+}
+
+.paginate_list {
+    background-color: blue;
+    color: white;
+    margin: 10px 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+
+}
+
+.activenavigation {
+    background-color: green;
+}
+
+.nonActivenavigation {
+    background-color: blue;
+}
+
+.paginatedlist .previousShow {
+    background-color: rgb(124, 97, 168);
+
+    color: white;
+    margin: 10px 10px;
+    font-weight: 600;
+
+    padding: 8px 10px;
+    cursor: pointer;
+
+}
+
+.paginatedlist .lastArray {
+    background-color: rgb(124, 97, 168);
+    color: white;
+    font-weight: 600;
+    margin: 10px 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1168px) and (min-width: 868px) {
+
+    .subscription-container {
+        padding: 0px 10px;
+    }
+
+    .imageGrid {
+        grid-template-columns: auto auto;
+        row-gap: 20px;
+    }
+
+    .main-image-data {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 868px) and (min-width: 668px) {
+    .subscription-container {
+        padding: 0px 10px;
+    }
+
+    .imageGrid {
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+
+    .main-image-data {
+        width: 625px;
+    }
+
+}
+
+@media screen and (max-width: 668px) and (min-width: 475px) {
+    .subscription-container {
+        padding: 0px 10px;
+    }
+
+    .imageGrid {
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+
+    .main-image-data {
+        width: 440px;
+    }
+
+}
+
+@media screen and (max-width: 475px) and (min-width: 375px) {
+    .subscription-container {
+        padding: 0px 10px;
+    }
+
+    .imageGrid {
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+
+    .main-image-data {
+        width: 350px;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    /* .subscription-container {
+        padding: 0px 6px;
+    } */
+
+    .imageGrid {
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+
+    .main-image-data {
+        width: 280px;
+    }
+
+    .paginate_list {
+        padding: 6px 8px;
+    }
+
+    .paginatedlist .previousShow {
+        padding: 6px 6px;
+    }
+
+    .paginatedlist .lastArray {
+        padding: 6px 6px;
+    }
+
+}
