@@ -20,7 +20,6 @@ const ShowSubscription = () => {
         }
       );
       if (result) {
-        console.log("result", result.data.data);
         setSubscriptionData(result.data.data);
         setTotalDocument(result.data.totalDocument);
       }
@@ -35,11 +34,8 @@ const ShowSubscription = () => {
     i++;
   }
   const arrayLength = array.length;
-  console.log("Length of Array is", arrayLength);
   const initialArray = array.slice(0, 2);
-  console.log("Initial Array is", initialArray);
   const lastArray = array.slice(arrayLength - 1, arrayLength);
-  console.log("Last array is", lastArray);
 
   return (
     <div>
@@ -83,8 +79,9 @@ const ShowSubscription = () => {
         >
           {"<<"}
         </span>
-        {initialArray?.map((value) => (
+        {initialArray?.map((value, index) => (
           <span
+          key={index}
             className={`paginate_list ${
               activePage === value ? "activenavigation " : "nonActivenavigation"
             } `}
@@ -94,8 +91,9 @@ const ShowSubscription = () => {
           </span>
         ))}
         <span className="dotshowSubscription">. . . . . . </span>
-        {lastArray?.map((value) => (
+        {lastArray?.map((value, index) => (
           <span
+          key={index}
             className={`paginate_list ${
               activePage === value ? "activenavigation " : "nonActivenavigation"
             } `}

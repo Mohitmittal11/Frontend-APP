@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Style/listing.css";
-import { act } from "react";
 const Listing = () => {
   const navigate = useNavigate();
 
@@ -37,9 +36,7 @@ const Listing = () => {
   }
 
   const initailArray = paginateArray.slice(0, 2);
-  console.log("initial rrray is ", initailArray);
 
-  console.log("initial array is", initailArray);
 
   const lengthofpaginateArray = paginateArray.length;
 
@@ -48,11 +45,9 @@ const Listing = () => {
     lengthofpaginateArray
   );
 
-  console.log("Last [paginate Array is", lastpaginateArray);
 
   const handleDelete = async (deletedataId, e) => {
     e.preventDefault();
-    console.log("Delete");
     if (deletedataId) {
       const result = window.confirm("Do You Want to Delete");
       if (result) {
@@ -103,7 +98,6 @@ const Listing = () => {
                       className="selectStatus"
                       onClick={async (e) => {
                         e.preventDefault();
-                        console.log("Value Id", value._id);
                         handleStatusUpdate(value._id, e.target.value);
                       }}
                       name="status"

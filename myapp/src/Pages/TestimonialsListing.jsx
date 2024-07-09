@@ -1,4 +1,4 @@
-import React, { useState, useEffect, act } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../Style/testimoniallisting.css";
@@ -39,9 +39,7 @@ const TestimonialsListing = () => {
 
   const arrayLength = array.length;
   const initialArray = array.slice(0, 2);
-  console.log("Initial array is", initialArray);
   const lastArray = array.slice(arrayLength - 1, arrayLength);
-  console.log("Last array is ", lastArray);
 
   const handleStatusUpdate = async (idToUpdateStatus, statusValue) => {
     const result = await axios.patch(

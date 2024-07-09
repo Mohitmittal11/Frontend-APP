@@ -31,9 +31,7 @@ const Bannerpage = () => {
     setActiveButton(true);
 
     data = { ...data, image: imageUrl };
-    if (data) {
-      console.log("Data is ", data);
-    }
+ 
 
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/insertData`,
@@ -72,7 +70,7 @@ const Bannerpage = () => {
               {...register("title", {
                 required: "Title is Required",
                 pattern: {
-                  value: /^[a-zA-Z][a-zA-Z0-9]*$/g,
+                  value: /^[A-Za-z\s]+$/g,
                   message: "Please fill Only Characters",
                 },
               })}

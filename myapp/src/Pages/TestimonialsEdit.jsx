@@ -41,9 +41,7 @@ const TestimonialsEdit = () => {
   const onFormSubmit = async () => {
     setActiveButton(true);
 
-    if (editableData) {
-      console.log("Editable Data is ", editableData);
-    }
+   
     const result = await axios.patch(
       `${process.env.REACT_APP_URL}/updateTestimonialsatSpecificId/${params.id}`,
       {

@@ -1,4 +1,4 @@
-import React, { act, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../Style/subscriptionlisting.css";
@@ -42,9 +42,7 @@ const SubscriptionPageListing = () => {
         position: "top-center",
         autoClose: 2000,
       });
-      console.log("Result is", result);
 
-      // window.location.reload();
     }
   };
 
@@ -55,7 +53,6 @@ const SubscriptionPageListing = () => {
       const response = await axios.patch(
         `${process.env.REACT_APP_URL}/deletesubscriptionData/${idtoDelete}`
       );
-      console.log("Response is", response);
       window.location.reload();
     }
   };
@@ -68,14 +65,11 @@ const SubscriptionPageListing = () => {
   }
 
   const lengthofArray = array.length;
-  console.log("Length of array is", lengthofArray);
 
   const initilArray = array.slice(0, 2);
-  console.log("Initial Array is", initilArray);
 
   const lastArray = array.slice(lengthofArray - 1, lengthofArray);
 
-  console.log("last Array is", lastArray);
 
   return (
     <div className="subscriptionListing">

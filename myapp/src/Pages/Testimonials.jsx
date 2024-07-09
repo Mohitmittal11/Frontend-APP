@@ -22,7 +22,6 @@ const Testimonials = () => {
     const bodyRequest = { ...data, address: addressvalue };
     setActiveButton(true);
 
-    console.log("Body Request is", bodyRequest);
 
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/addtestimonials`,
@@ -30,7 +29,6 @@ const Testimonials = () => {
         bodyRequest: bodyRequest,
       }
     );
-    console.log("Response is ", response);
     if (response.status === 200) {
       toast.success("Data Submitted Successfully", {
         position: "top-center",

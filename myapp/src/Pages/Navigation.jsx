@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../Style/navigation.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import Bannerpage from "./Bannerpage";
@@ -29,19 +28,14 @@ const Navigation = () => {
           </p>
           <ul>
             <li>
-              <NavLink
-                className={"list"}
-                exact
-                activeClassName={"active"}
-                to="/"
-              >
+              <NavLink className={"list"}  activeclassname={"active"} to="/">
                 Banner_Page
               </NavLink>
             </li>
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to="/listing"
               >
                 Listing
@@ -50,7 +44,7 @@ const Navigation = () => {
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to={"/subscription"}
               >
                 Subscription
@@ -59,7 +53,7 @@ const Navigation = () => {
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to={"/subscriptionlisting"}
               >
                 Subscription Listing
@@ -68,7 +62,7 @@ const Navigation = () => {
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to={"/testimonials"}
               >
                 Testimonials
@@ -77,7 +71,7 @@ const Navigation = () => {
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to={"/testimonialslisting"}
               >
                 Testimonials_Listing
@@ -86,7 +80,7 @@ const Navigation = () => {
             <li>
               <NavLink
                 className={"list"}
-                activeClassName={"active"}
+                activeclassname={"active"}
                 to={"/showSubscrption"}
               >
                 Show _Subscription

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import "../Style/subscription.css";
 import { useNavigate } from "react-router-dom";
@@ -14,27 +14,13 @@ const Subscription = () => {
   } = useForm();
   const navigate = useNavigate();
   const [imageurl, setimageurl] = useState();
-  const [facilityData, setFacilityData] = useState([]);
-  const [imageError, setImageError] = useState([]);
-  const [facilityError, setFacilityError] = useState();
   const [buttonactive, setbuttonActive] = useState(false);
   const [productmrp, setMRP] = useState();
   const [percent_Discount, setPercentDiscount] = useState();
-  const [discountMoneyerror, setDiscountMoneyerror] = useState("");
+  const [dmoney, setDmoney] = useState();
+  const [cprice, setCprice] = useState();
   const [currentpriceerror, setcurrentPriceerror] = useState("");
 
-  let dmoney, cprice;
-  if (productmrp > 0 && percent_Discount >= 0) {
-    dmoney = (productmrp * percent_Discount) / 100;
-    if (dmoney >= 0) {
-      cprice = productmrp - dmoney;
-    }
-    if (dmoney && cprice) {
-      console.log(`Discount money is ${dmoney} and current price is ${cprice}`);
-      setDiscountMoneyerror("");
-      setcurrentPriceerror("");
-    }
-  }
   const handleImageValue = (e) => {
     e.preventDefault();
     if (imageurl) {
@@ -48,7 +34,7 @@ const Subscription = () => {
     let bodyRequest = { ...data, image: imageurl };
     bodyRequest = { ...bodyRequest, discount: dmoney };
     bodyRequest = { ...bodyRequest, current_price: cprice };
-  
+
     if (!bodyRequest?.current_price) {
       setcurrentPriceerror("Current Price is Required");
       return false;
@@ -64,7 +50,6 @@ const Subscription = () => {
         bodyData: bodyRequest,
       }
     );
-    console.log("Result is ", result);
     if (result.status === 200) {
       toast.success("Form submitted successfully", {
         position: "top-center",
@@ -74,6 +59,29 @@ const Subscription = () => {
       }, 2000);
     }
   };
+  let d_money, c_price;
+  useEffect(() => {
+    if (productmrp > 0 && percent_Discount >= 0) {
+      console.log(
+        `Product MRP is ${productmrp} and % Discount is ${percent_Discount}`
+      );
+      d_money = (productmrp * percent_Discount) / 100;
+
+      console.log(`Discount Money is ${d_money}`);
+      setDmoney(d_money);
+      c_price = productmrp - d_money;
+      setCprice(c_price);
+      console.log("c_price  is", c_price);
+
+      // if (dmoney && cprice) {
+      //   setcurrentPriceerror("");
+      // }
+    }
+  }, [productmrp, percent_Discount]);
+
+  // console.log(
+  //   `Discount Money is ${dmoney} and Current Price is ${cprice}`
+  // );
 
   return (
     <div className="main-subscription-container">
@@ -114,7 +122,6 @@ const Subscription = () => {
               X
             </span>
 
-            {imageError && <p>{imageError}</p>}
             <></>
           </div>
           <div className="membership">
@@ -291,7 +298,6 @@ const Subscription = () => {
           <div className="textInputData">
             <label htmlFor="priceId">Enter MRP</label>
             <input
-              // onChange={handleChange}
               className="textData"
               type="text"
               name="mrp"
@@ -318,7 +324,6 @@ const Subscription = () => {
 
             <label htmlFor="percentDiscount">% Discount</label>
             <input
-              // onChange={handleChange}
               className="textData"
               type="text"
               id="percentDiscount"
@@ -344,8 +349,6 @@ const Subscription = () => {
 
             <label htmlFor="discount">Discount Money</label>
             <input
-              // onChange={handleChange}
-              // value={discountMoney && discountMoney}
               value={dmoney >= 0 ? dmoney : ""}
               className="textData"
               type="text"
@@ -357,15 +360,9 @@ const Subscription = () => {
                 }
               }}
               placeholder="Discount Money"
-              // onChange={(e) => {
-              //   if (e.target.value) {
-              //     setDiscountMoneyerror("");
-              //   }
-              // }}
             />
             <label htmlFor="currentPrice">Current Price</label>
             <input
-              // onChange={handleChange}
               value={cprice >= 0 ? cprice : ""}
               className="textData"
               type="text"

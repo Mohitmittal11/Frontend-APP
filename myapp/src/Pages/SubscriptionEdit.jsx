@@ -30,7 +30,6 @@ const SubscriptionEdit = () => {
         setEditableData(result.data.data);
 
         for (const [key, value] of Object.entries(result.data.data)) {
-          console.log(`Key is ${key} and value is ${value}`);
           setValue(key, value);
         }
         setFacilityData(result.data.data.facilities);
@@ -85,7 +84,6 @@ const SubscriptionEdit = () => {
       bodyRequest = { ...bodyRequest, current_price: currentprice };
     }
 
-    console.log("Body Request is ", bodyRequest);
 
     const response = await axios.patch(
       `${process.env.REACT_APP_URL}/updatesubscriptionData/${id}`,
@@ -94,7 +92,6 @@ const SubscriptionEdit = () => {
       }
     );
 
-    console.log("Response is ", response);
 
     if (response.status === 200) {
       toast.success("Data Updated Successfully", {

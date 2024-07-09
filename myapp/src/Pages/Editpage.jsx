@@ -15,7 +15,6 @@ const Editpage = () => {
   } = useForm();
 
   const [editableData, setEditableData] = useState();
-  const [imageValue, setImageValue] = useState();
   const [activeLoader, setActiveLoader] = useState(false);
 
   const { id } = useParams();
@@ -26,7 +25,6 @@ const Editpage = () => {
         `${process.env.REACT_APP_URL}/getDatas/${id}`
       );
       if (result) {
-        console.log("Result", result);
         setEditableData(result.data.data);
         for (const [key, value] of Object.entries(result.data.data)) {
           setValue(key, value);
@@ -40,18 +38,14 @@ const Editpage = () => {
     const imageValue1 = e.target.files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
-      setImageValue(reader.result);
       setEditableData({ ...editableData, image: reader.result });
-      console.log("Reader Result is", reader.result);
     };
     reader.readAsDataURL(imageValue1);
   };
 
   const onFormSubmit = async () => {
     setActiveLoader(true);
-    if (editableData) {
-      console.log("Editable Data is", editableData);
-    }
+  
     const response = await axios.patch(
       `${process.env.REACT_APP_URL}/updateData/${id}`,
       {
