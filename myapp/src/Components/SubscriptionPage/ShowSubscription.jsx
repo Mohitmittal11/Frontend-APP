@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-import "../Style/showsubscription.css";
+import "../../Style/SubscriptionStyle/showsubscription.css";
 const ShowSubscription = () => {
   const [subscriptionData, setSubscriptionData] = useState([]);
   const [activePage, setActivePage] = useState(1);

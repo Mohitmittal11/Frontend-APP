@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import "../Style/testimonials.css";
+import "../../Style/testimonialsStyle/testimonials.css";
 
 const Testimonials = () => {
   const navigate = useNavigate();
@@ -22,12 +22,9 @@ const Testimonials = () => {
     const bodyRequest = { ...data, address: addressvalue };
     setActiveButton(true);
 
-
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/addtestimonials`,
-      {
-        bodyRequest: bodyRequest,
-      }
+      bodyRequest
     );
     if (response.status === 200) {
       toast.success("Data Submitted Successfully", {
@@ -69,7 +66,7 @@ const Testimonials = () => {
               },
             })}
           />
-          <p>{errors?.username?.message}</p>
+          <p className="testimonialerror">{errors?.username?.message}</p>
 
           <label htmlFor="place"> Enter Place</label>
           <input
@@ -93,7 +90,7 @@ const Testimonials = () => {
               },
             })}
           />
-          <p>{errors?.place?.message}</p>
+          <p className="testimonialerror">{errors?.place?.message}</p>
           <label htmlFor="city">Enter City</label>
           <input
             className="textInput"
@@ -116,7 +113,7 @@ const Testimonials = () => {
               },
             })}
           />
-          <p>{errors?.city?.message}</p>
+          <p className="testimonialerror">{errors?.city?.message}</p>
 
           <label htmlFor="descrition">Description</label>
           <textarea
@@ -139,7 +136,7 @@ const Testimonials = () => {
             name="description"
             rows={5}
           />
-          <p>{errors?.description?.message}</p>
+          <p className="testimonialerror">{errors?.description?.message}</p>
           <div className="MainStatus">
             <label>Choose Status</label>
             <div className="testimonialsstatus">
@@ -172,7 +169,7 @@ const Testimonials = () => {
               />
               <label htmlFor="status">InActive</label>
             </div>
-            <p>{errors?.status?.message}</p>
+            <p className="testimonialerror">{errors?.status?.message}</p>
           </div>
           <button className="testimonialssubmit">
             {!activeButton ? "SUBMIT" : "LOADING..."}

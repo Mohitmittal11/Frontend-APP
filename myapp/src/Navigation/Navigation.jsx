@@ -1,16 +1,16 @@
 import React from "react";
-import "../Style/navigation.css";
+import "../Style/navStyle/navigation.css";
 import { Routes, Route, NavLink } from "react-router-dom";
-import Bannerpage from "./Bannerpage";
-import Listing from "./Listing";
-import Editpage from "./Editpage";
-import Subscription from "./Subscription";
-import SubscriptionPageListing from "./SubscriptionPageListing";
-import SubscriptionEdit from "./SubscriptionEdit";
-import Testimonials from "./Testimonials";
-import TestimonialsListing from "./TestimonialsListing";
-import TestimonialsEdit from "./TestimonialsEdit";
-import ShowSubscription from "./ShowSubscription";
+import Bannerpage from "../Components/BannerPage/Bannerpage";
+import Listing from "../Components/BannerPage/Listing";
+import Editpage from "../Components/BannerPage/Editpage";
+import Subscription from "../Components/SubscriptionPage/Subscription";
+import SubscriptionPageListing from "../Components/SubscriptionPage/SubscriptionPageListing";
+import SubscriptionEdit from "../Components/SubscriptionPage/SubscriptionEdit";
+import Testimonials from "../Components/Testimonials/Testimonials";
+import TestimonialsListing from "../Components/Testimonials/TestimonialsListing";
+import TestimonialsEdit from "../Components/Testimonials/TestimonialsEdit";
+import ShowSubscription from "../Components/SubscriptionPage/ShowSubscription";
 
 const Navigation = () => {
   const myFunction = (e) => {
@@ -28,7 +28,7 @@ const Navigation = () => {
           </p>
           <ul>
             <li>
-              <NavLink className={"list"}  activeclassname={"active"} to="/">
+              <NavLink className={"list"} activeclassname={"active"} to="/">
                 Banner_Page
               </NavLink>
             </li>

@@ -1,7 +1,7 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../Style/subscriptionlisting.css";
+import "../../Style/SubscriptionStyle/subscriptionlisting.css";
 import { ToastContainer, toast } from "react-toastify";
 
 const SubscriptionPageListing = () => {
@@ -42,7 +42,6 @@ const SubscriptionPageListing = () => {
         position: "top-center",
         autoClose: 2000,
       });
-
     }
   };
 
@@ -68,8 +67,9 @@ const SubscriptionPageListing = () => {
 
   const initilArray = array.slice(0, 2);
 
-  const lastArray = array.slice(lengthofArray - 1, lengthofArray);
+  console.log("Initial Array Data is", initilArray);
 
+  const lastArray = array.slice(lengthofArray - 1, lengthofArray);
 
   return (
     <div className="subscriptionListing">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../Style/bannerpage.css";
+import "../../Style/bannerStyle/bannerpage.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -31,13 +31,14 @@ const Bannerpage = () => {
     setActiveButton(true);
 
     data = { ...data, image: imageUrl };
- 
+
+    if (data) {
+      console.log("Data that is send to the server is", data);
+    }
 
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/insertData`,
-      {
-        data: data,
-      }
+      data
     );
     if (response.status === 200) {
       toast.success("form submitted successfully", {
@@ -95,8 +96,9 @@ const Bannerpage = () => {
               {...register("position", {
                 required: "Position is Required",
                 pattern: {
-                  value: /[0-9]/g,
-                  message: "Please Fill only Numbers",
+                  value: /^[1-9]\d*$/,
+                  message:
+                    "Please Enter Only Digits and First Digit Can't be Zero",
                 },
               })}
             />

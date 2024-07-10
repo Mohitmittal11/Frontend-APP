@@ -1,4 +1,4 @@
-import Navigation from "./Pages/Navigation";
+import Navigation from "./Navigation/Navigation";
 
 import "./App.css";
 

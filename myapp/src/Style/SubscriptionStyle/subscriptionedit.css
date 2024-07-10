@@ -125,8 +125,10 @@ body {
    border-radius: 50%;
 }
 
-p {
+.subscription_edit_error {
    color: red;
+   text-align: left;
+   margin-top: 10px;
 }
 
 @media screen and (max-width: 1024px) {

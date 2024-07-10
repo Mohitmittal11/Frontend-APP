@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../Style/testimoniallisting.css";
+import "../../Style/testimonialsStyle/testimoniallisting.css";
 import { ToastContainer, toast } from "react-toastify";
 const TestimonialsListing = () => {
   const limit = 5;

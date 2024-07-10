@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
-import "../Style/subscription.css";
+import "../../Style/SubscriptionStyle/subscription.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -46,9 +46,7 @@ const Subscription = () => {
 
     const result = await axios.post(
       `${process.env.REACT_APP_URL}/addsubscriptiondata`,
-      {
-        bodyData: bodyRequest,
-      }
+      bodyRequest
     );
     if (result.status === 200) {
       toast.success("Form submitted successfully", {
@@ -112,7 +110,7 @@ const Subscription = () => {
                 },
               })}
             />
-            <p>{errors?.image?.message}</p>
+            <p className="subscriptionError">{errors?.image?.message}</p>
             <></>
             <span
               id="removeImage"
@@ -166,7 +164,9 @@ const Subscription = () => {
               />
               <label htmlFor="year">Year</label>
             </div>
-            <p>{errors?.subscription_type?.message}</p>
+            <p className="subscriptionError">
+              {errors?.subscription_type?.message}
+            </p>
           </div>
           <div className="membership_title">
             <label>Choose Preferred Membership-Type</label>
@@ -196,7 +196,9 @@ const Subscription = () => {
               />
               <label htmlFor="gold">Gold</label>
             </div>
-            <p>{errors?.membership_type?.message}</p>
+            <p className="subscriptionError">
+              {errors?.membership_type?.message}
+            </p>
           </div>
           <div className="facilities">
             <label>Choose Facilities</label>
@@ -265,7 +267,7 @@ const Subscription = () => {
               />
               <label htmlFor="copper">Copper</label>
             </div>
-            <p>{errors?.facilities?.message}</p>
+            <p className="subscriptionError">{errors?.facilities?.message}</p>
           </div>
           <div className="isRefundable">
             <label>Is Refundable?</label>
@@ -293,7 +295,7 @@ const Subscription = () => {
               />
               <label htmlFor="no">No</label>
             </div>
-            <p>{errors?.refundable?.message}</p>
+            <p className="subscriptionError">{errors?.refundable?.message}</p>
           </div>
           <div className="textInputData">
             <label htmlFor="priceId">Enter MRP</label>
@@ -320,7 +322,7 @@ const Subscription = () => {
                 },
               })}
             />
-            <p>{errors?.mrp?.message}</p>
+            <p className="subscriptionError">{errors?.mrp?.message}</p>
 
             <label htmlFor="percentDiscount">% Discount</label>
             <input
@@ -345,7 +347,9 @@ const Subscription = () => {
                 },
               })}
             />
-            <p>{errors?.discount_percent?.message}</p>
+            <p className="subscriptionError">
+              {errors?.discount_percent?.message}
+            </p>
 
             <label htmlFor="discount">Discount Money</label>
             <input
@@ -410,7 +414,7 @@ const Subscription = () => {
               />
               <label htmlFor="unavailable">Unavailable</label>
             </div>
-            <p>{errors?.status?.message}</p>
+            <p className="subscriptionError">{errors?.status?.message}</p>
           </div>
           <button id="subscription-btn">
             {!buttonactive ? "SUBMIT" : "Loading..."}

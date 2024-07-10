@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../Style/testimonialedit.css";
+import "../../Style/testimonialsStyle/testimonialedit.css";
 
 import { React, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";

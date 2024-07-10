@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Style/subscriptionedit.css";
+import "../../Style/SubscriptionStyle/subscriptionedit.css";
 
 const SubscriptionEdit = () => {
   const {
@@ -185,7 +185,7 @@ const SubscriptionEdit = () => {
               <label htmlFor="year">Year</label>
             </div>
             {errors.subscription_type && (
-              <p>{errors.subscription_type.message}</p>
+              <p className="subscription_edit_error" >{errors.subscription_type.message}</p>
             )}
           </div>
           <div className="membership_title">
@@ -226,7 +226,7 @@ const SubscriptionEdit = () => {
               />
               <label htmlFor="gold">Gold</label>
             </div>
-            {errors.membership_type && <p>{errors.membership_type.message}</p>}
+            {errors.membership_type && <p className="subscription_edit_error" >{errors.membership_type.message}</p>}
           </div>
           <></>
           <div className="facilities">
@@ -324,7 +324,7 @@ const SubscriptionEdit = () => {
               />
               <label htmlFor="no">No</label>
             </div>
-            {errors.refundable && <p>{errors.refundable.message}</p>}
+            {errors.refundable && <p className="subscription_edit_error">{errors.refundable.message}</p>}
           </div>
           <div className="textInputData">
             <label htmlFor="priceId">Enter MRP</label>
@@ -344,7 +344,7 @@ const SubscriptionEdit = () => {
               })}
               placeholder="Enter Price"
             />
-            {errors.mrp && <p>{errors.mrp.message}</p>}
+            {errors.mrp && <p className="subscription_edit_error">{errors.mrp.message}</p>}
             <label htmlFor="percentDiscount">% Discount</label>
             <input
               className="textData"
@@ -366,7 +366,7 @@ const SubscriptionEdit = () => {
               placeholder="Enter Percent Discount"
             />
             {errors.discount_percent && (
-              <p>{errors.discount_percent.message}</p>
+              <p className="subscription_edit_error">{errors.discount_percent.message}</p>
             )}
 
             <label htmlFor="discount">Discount Money</label>
@@ -428,7 +428,7 @@ const SubscriptionEdit = () => {
               />
               <label htmlFor="unavailable">Unavailable</label>
             </div>
-            {errors.status && <p>{errors.status.message}</p>}
+            {errors.status && <p className="subscription_edit_error" >{errors.status.message}</p>}
           </div>
           <button id="subscription-btn">
             {!activeLoader ? "SUBMIT" : "Loading..."}

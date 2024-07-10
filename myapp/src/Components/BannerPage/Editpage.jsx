@@ -3,7 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
-import "../Style/editpage.css";
+import "../../Style/bannerStyle/editpage.css"
+
 import axios from "axios";
 const Editpage = () => {
   const navigate = useNavigate();
@@ -47,10 +48,8 @@ const Editpage = () => {
     setActiveLoader(true);
   
     const response = await axios.patch(
-      `${process.env.REACT_APP_URL}/updateData/${id}`,
-      {
-        data: editableData,
-      }
+      `${process.env.REACT_APP_URL}/updateData/${id}`,editableData
+     
     );
 
     if (response.status === 200) {

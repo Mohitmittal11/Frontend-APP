@@ -1,7 +1,10 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import axios from "axios";
-import "../Style/listing.css";
+import "../../Style/bannerStyle/listing.css";
 const Listing = () => {
   const navigate = useNavigate();
 
@@ -37,14 +40,12 @@ const Listing = () => {
 
   const initailArray = paginateArray.slice(0, 2);
 
-
   const lengthofpaginateArray = paginateArray.length;
 
   let lastpaginateArray = paginateArray.slice(
     lengthofpaginateArray - 1,
     lengthofpaginateArray
   );
-
 
   const handleDelete = async (deletedataId, e) => {
     e.preventDefault();
@@ -65,18 +66,27 @@ const Listing = () => {
   };
 
   const handleStatusUpdate = async (UpdateId, statusValue) => {
-    await axios
-      .patch(`${process.env.REACT_APP_URL}/${UpdateId}`, {
-        statusData: statusValue,
-      })
-      .then((data) => console.log("Data is ", data))
-      .catch((err) => console.log(err));
+    console.log("Status Value to send on server is ", statusValue);
+    const result = await axios.patch(
+      `${process.env.REACT_APP_URL}/updateStatus/${UpdateId}`,
+      {
+        data: statusValue,
+      }
+    );
+    if (result) {
+      toast.success("Status Updated Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
   };
 
   return (
     <div className="bannerPageupper">
       <div className="maincontainerofbanner">
         <h2>Banner Data Table</h2>
+        <ToastContainer />
+
         <div className="listbanner">
           <table>
             <thead>
