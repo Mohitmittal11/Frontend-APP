@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,20 +13,21 @@ const Listing = () => {
   const [bannerDataArray, setBannerDataArray] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [total, setTotal] = useState();
+  const [mutateLoader, setMutateLoader] = useState(false);
   // const [liststatus, setListStatus] = useState("");
 
   useEffect(() => {
+    setMutateLoader(true);
     async function getData() {
-      await axios({
-        method: "get",
-        url: `${process.env.REACT_APP_URL}/getData`,
+      const response = await axios.get(`${process.env.REACT_APP_URL}/getData`, {
         params: { limit: limit, page: activePage },
-      })
-        .then((value) => {
-          setBannerDataArray(value.data.record);
-          setTotal(value.data.totalDocument);
-        })
-        .catch((err) => console.log(err));
+      });
+
+      if (response.status === 200) {
+        setBannerDataArray(response.data.record);
+        setTotal(response.data.totalDocument);
+        setMutateLoader(false);
+      }
     }
 
     getData();
@@ -82,7 +84,23 @@ const Listing = () => {
   };
 
   return (
+
     <div className="bannerPageupper">
+    <div className="spinner">
+    {mutateLoader && (
+      <MutatingDots 
+        visible={true}
+        height="100"
+        width="100"
+        color="#3467eb"
+        secondaryColor="#4fa94d"
+        radius="12.5"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    )}
+  </div>
       <div className="maincontainerofbanner">
         <h2>Banner Data Table</h2>
         <ToastContainer />

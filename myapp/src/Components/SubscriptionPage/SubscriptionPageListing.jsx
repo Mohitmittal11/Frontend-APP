@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
+
 import "../../Style/SubscriptionStyle/subscriptionlisting.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -8,11 +10,13 @@ const SubscriptionPageListing = () => {
   let limit = 5;
   const [subscriptionData, setSubscriptionData] = useState([]);
   const [dataFound, setDataFound] = useState(true);
+  const [mutateLoader, setMutateLoader] = useState(false);
   const [numberofdocument, setTotalNumberOfDocument] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setMutateLoader(true);
     async function getSubscriptionData() {
       const result = await axios.get(
         `${process.env.REACT_APP_URL}/getSubscriptionData`,
@@ -23,6 +27,7 @@ const SubscriptionPageListing = () => {
       if (result.data.statuscode === 200) {
         setSubscriptionData(result.data.data);
         setTotalNumberOfDocument(result.data.totalDocument);
+        setMutateLoader(false);
       } else {
         setDataFound(false);
       }
@@ -73,6 +78,21 @@ const SubscriptionPageListing = () => {
 
   return (
     <div className="subscriptionListing">
+      <div className="subscription-spinner">
+        {mutateLoader && (
+          <MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#3467eb"
+            secondaryColor="#4fa94d"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        )}
+      </div>
       <div className="main-container">
         <h2>Subscription Listing</h2>
 

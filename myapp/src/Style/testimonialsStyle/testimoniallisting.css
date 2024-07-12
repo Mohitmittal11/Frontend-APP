@@ -6,7 +6,10 @@
     display: block;
     overflow-x: auto;
 }
-
+.testimonial-spinner {
+    display: flex;
+    justify-content: center;
+}
 .testiminialDatalisting table {
     border-collapse: collapse;
     width: 100%;

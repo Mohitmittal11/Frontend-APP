@@ -9,6 +9,11 @@ body {
     width: 100%;
 }
 
+.subscription-spinner {
+    display: flex;
+    justify-content: center;
+}
+
 .subscriptionListing th {
     border: 1px solid black;
 

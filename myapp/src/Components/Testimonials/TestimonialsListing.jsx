@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
 import "../../Style/testimonialsStyle/testimoniallisting.css";
 import { ToastContainer, toast } from "react-toastify";
 const TestimonialsListing = () => {
   const limit = 5;
   const navigate = useNavigate();
   const [testimonialsData, setTestimonialsData] = useState([]);
+  const [mutateLoader, setMutateLoader] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [allDocument, setAllDocuments] = useState();
 
   useEffect(() => {
+    setMutateLoader(true);
     const getData = async () => {
       const result = await axios.get(
         `${process.env.REACT_APP_URL}/getTestimonialsData`,
@@ -24,6 +27,7 @@ const TestimonialsListing = () => {
       if (result) {
         setTestimonialsData(result.data.data);
         setAllDocuments(result.data.totalDocuments);
+        setMutateLoader(false);
       }
     };
 
@@ -72,6 +76,21 @@ const TestimonialsListing = () => {
 
   return (
     <div className="testimoniallisting">
+      <div className="testimonial-spinner">
+        {mutateLoader && (
+          <MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#3467eb"
+            secondaryColor="#4fa94d"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        )}
+      </div>
       <div className="main-listing">
         <h2>Testimonials Listing</h2>
         <div className="testiminialDatalisting">

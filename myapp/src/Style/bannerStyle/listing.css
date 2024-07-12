@@ -3,6 +3,11 @@ body {
     padding: 0;
 }
 
+.spinner {
+   display: flex;
+   justify-content: center;
+}
+
 .maincontainerofbanner {
     padding: 0px 10px;
 }
