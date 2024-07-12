@@ -8,7 +8,7 @@ import "../../Style/testimonialsStyle/testimonials.css";
 
 const Testimonials = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState();
+  const [dataofform, setData] = useState();
   const [addressvalue, setAddressValue] = useState();
   const [activeButton, setActiveButton] = useState(false);
 
@@ -19,8 +19,11 @@ const Testimonials = () => {
   } = useForm();
 
   const onhandleSubmit = async () => {
-    const bodyRequest = { ...data, address: addressvalue };
-    setActiveButton(true);
+    console.log("Address VALUE is", addressvalue);
+    const bodyRequest = { ...dataofform, address: addressvalue };
+    // setActiveButton(true);
+
+    console.log("Body Request data", bodyRequest);
 
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/addtestimonials`,
@@ -58,7 +61,7 @@ const Testimonials = () => {
             {...register("username", {
               required: "*Username is Required",
               onChange: (e) => {
-                setData({ ...data, username: e.target.value });
+                setData({ ...dataofform, username: e.target.value });
               },
               pattern: {
                 value: /^[A-Za-z\s]+$/g,
@@ -120,7 +123,7 @@ const Testimonials = () => {
             {...register("description", {
               required: "*Description is Required",
               onChange: (e) => {
-                setData({ ...data, description: e.target.value });
+                setData({ ...dataofform, description: e.target.value });
               },
               pattern: {
                 value: /^[A-Za-z\s]+$/g,
@@ -144,7 +147,7 @@ const Testimonials = () => {
                 {...register("status", {
                   required: "*Please Choose One Option",
                   onChange: (e) => {
-                    setData({ ...data, status: e.target.value });
+                    setData({ ...dataofform, status: e.target.value });
                   },
                 })}
                 type="radio"
@@ -159,7 +162,7 @@ const Testimonials = () => {
                 {...register("status", {
                   required: "*Please Choose One Option",
                   onChange: (e) => {
-                    setData({ ...data, status: e.target.value });
+                    setData({ ...dataofform, status: e.target.value });
                   },
                 })}
                 type="radio"

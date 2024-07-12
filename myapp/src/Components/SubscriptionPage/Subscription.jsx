@@ -17,6 +17,7 @@ const Subscription = () => {
   const [buttonactive, setbuttonActive] = useState(false);
   const [productmrp, setMRP] = useState();
   const [percent_Discount, setPercentDiscount] = useState();
+  const [facility, setFacility] = useState([]);
   const [dmoney, setDmoney] = useState();
   const [cprice, setCprice] = useState();
   const [currentpriceerror, setcurrentPriceerror] = useState("");
@@ -31,22 +32,33 @@ const Subscription = () => {
   };
 
   const FormSubmit = async (data) => {
-    let bodyRequest = { ...data, image: imageurl };
-    bodyRequest = { ...bodyRequest, discount: dmoney };
-    bodyRequest = { ...bodyRequest, current_price: cprice };
+    setbuttonActive(true);
 
-    if (!bodyRequest?.current_price) {
-      setcurrentPriceerror("Current Price is Required");
-      return false;
-    }
+    console.log("Facility array is", facility);
 
-    if (bodyRequest?.current_price) {
-      setbuttonActive(true);
-    }
+    const formData = new FormData();
+
+    formData.append("image", imageurl);
+    formData.append("subscription_type", data.subscription_type);
+    formData.append("membership_type", data.membership_type);
+    facility.forEach((value) => {
+      formData.append("facilities[]", value);
+    });
+    formData.append("refundable", data.refundable);
+    formData.append("mrp", data.mrp);
+    formData.append("discount_percent", data.discount_percent);
+    formData.append("discount", dmoney);
+    formData.append("current_price", cprice);
+    formData.append("status", data.status);
 
     const result = await axios.post(
       `${process.env.REACT_APP_URL}/addsubscriptiondata`,
-      bodyRequest
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
     if (result.status === 200) {
       toast.success("Form submitted successfully", {
@@ -71,9 +83,9 @@ const Subscription = () => {
       setCprice(c_price);
       console.log("c_price  is", c_price);
 
-      // if (dmoney && cprice) {
-      //   setcurrentPriceerror("");
-      // }
+      if (dmoney && cprice) {
+        setcurrentPriceerror("");
+      }
     }
   }, [productmrp, percent_Discount]);
 
@@ -99,14 +111,9 @@ const Subscription = () => {
               {...register("image", {
                 required: "*Image is Required",
                 onChange: (e) => {
-                  const file = e.target.files[0];
-                  const reader = new FileReader();
-                  reader.onloadend = function () {
-                    document.getElementById("removeImage").style.display =
-                      "block";
-                    setimageurl(reader.result);
-                  };
-                  reader.readAsDataURL(file);
+                  document.getElementById("removeImage").style.display =
+                    "block";
+                  setimageurl(e.target.files[0]);
                 },
               })}
             />
@@ -211,6 +218,9 @@ const Subscription = () => {
                 value="RO"
                 {...register("facilities", {
                   required: "Please Choose one Option",
+                  onChange: (e) => {
+                    setFacility([...facility, e.target.value]);
+                  },
                 })}
               />
               <label htmlFor="ro">RO</label>
@@ -224,6 +234,9 @@ const Subscription = () => {
                 value="UV"
                 {...register("facilities", {
                   required: "Please Choose one Option",
+                  onChange: (e) => {
+                    setFacility([...facility, e.target.value]);
+                  },
                 })}
               />
               <label htmlFor="uv">UV</label>
@@ -237,6 +250,9 @@ const Subscription = () => {
                 value="UF"
                 {...register("facilities", {
                   required: "Please Choose one Option",
+                  onChange: (e) => {
+                    setFacility([...facility, e.target.value]);
+                  },
                 })}
               />
               <label htmlFor="uf">UF</label>
@@ -250,6 +266,9 @@ const Subscription = () => {
                 value="TDS"
                 {...register("facilities", {
                   required: "Please Choose one Option",
+                  onChange: (e) => {
+                    setFacility([...facility, e.target.value]);
+                  },
                 })}
               />
               <label htmlFor="tds">TDS</label>
@@ -263,6 +282,9 @@ const Subscription = () => {
                 value="Copper"
                 {...register("facilities", {
                   required: "Please Choose one Option",
+                  onChange: (e) => {
+                    setFacility([...facility, e.target.value]);
+                  },
                 })}
               />
               <label htmlFor="copper">Copper</label>
@@ -384,7 +406,9 @@ const Subscription = () => {
               //   }
               // }}
             />
-            <p>{currentpriceerror && currentpriceerror}</p>
+            <p className="subscriptionError">
+              {currentpriceerror && currentpriceerror}
+            </p>
           </div>
           <div className="statusInfo">
             <label>Choose Status</label>
