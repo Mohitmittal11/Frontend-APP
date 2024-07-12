@@ -1,14 +1,17 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 import "../../Style/SubscriptionStyle/showsubscription.css";
 const ShowSubscription = () => {
   const [subscriptionData, setSubscriptionData] = useState([]);
+  const [mutateLoader, setMutateLoader] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [totalDocument, setTotalDocument] = useState();
 
   const limit = 6;
 
   useEffect(() => {
+    setMutateLoader(true);
     async function getData() {
       const result = await axios.get(
         `${process.env.REACT_APP_URL}/getCompleteSubscriptionData`,
@@ -19,9 +22,10 @@ const ShowSubscription = () => {
           },
         }
       );
-      if (result) {
+      if (result.status === 200) {
         setSubscriptionData(result.data.data);
         setTotalDocument(result.data.totalDocument);
+        setMutateLoader(false);
       }
     }
     getData();
@@ -40,6 +44,21 @@ const ShowSubscription = () => {
   return (
     <div>
       <div className="subscription-container">
+        <div className="subscription-spinner">
+          {mutateLoader && (
+            <RotatingLines
+              visible={true}
+              height="96"
+              width="96"
+              strokeWidth="5"
+              strokeColor="#3467eb"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          )}
+        </div>
         <h2>Show SubScription</h2>
         <div className="imageGrid">
           {subscriptionData.map((value) => (
@@ -81,7 +100,7 @@ const ShowSubscription = () => {
         </span>
         {initialArray?.map((value, index) => (
           <span
-          key={index}
+            key={index}
             className={`paginate_list ${
               activePage === value ? "activenavigation " : "nonActivenavigation"
             } `}
@@ -93,7 +112,7 @@ const ShowSubscription = () => {
         <span className="dotshowSubscription">. . . . . . </span>
         {lastArray?.map((value, index) => (
           <span
-          key={index}
+            key={index}
             className={`paginate_list ${
               activePage === value ? "activenavigation " : "nonActivenavigation"
             } `}
