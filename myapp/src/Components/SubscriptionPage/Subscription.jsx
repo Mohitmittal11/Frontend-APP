@@ -69,8 +69,9 @@ const Subscription = () => {
       }, 2000);
     }
   };
-  let d_money, c_price;
   useEffect(() => {
+    let d_money, c_price;
+
     if (productmrp > 0 && percent_Discount >= 0) {
       console.log(
         `Product MRP is ${productmrp} and % Discount is ${percent_Discount}`

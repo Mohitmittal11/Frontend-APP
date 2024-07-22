@@ -115,7 +115,7 @@ const SubscriptionPageListing = () => {
               </tr>
             </thead>
             <tbody>
-              {subscriptionData.map((value) => (
+              {subscriptionData?.map((value) => (
                 <tr>
                   <td>
                     <img src={value.image} alt="subscriptionpic" />
@@ -123,7 +123,7 @@ const SubscriptionPageListing = () => {
                   <td>{value.subscription_type}</td>
                   <td>{value.membership_type}</td>
                   <td>
-                    {value.facilities.map((data) => (
+                    {value.facilities?.map((data) => (
                       <p className="facilitiesData">{data}</p>
                     ))}
                   </td>
@@ -184,7 +184,7 @@ const SubscriptionPageListing = () => {
         >
           {`<<`}
         </span>
-        {initilArray.map((value) => (
+        {initilArray?.map((value) => (
           <span
             className={`paginationdata ${
               activePage === value ? "subscriptionpagination" : "setcolor"
@@ -200,7 +200,7 @@ const SubscriptionPageListing = () => {
 
         <span className="dotSubscription">. . . . . .</span>
 
-        {lastArray.map((value) => (
+        {lastArray?.map((value) => (
           <span
             className={`paginationdata ${
               activePage === value ? "subscriptionpagination" : "setcolor"

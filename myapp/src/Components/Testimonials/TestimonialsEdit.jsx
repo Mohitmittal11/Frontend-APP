@@ -8,7 +8,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 const TestimonialsEdit = () => {
   const params = useParams();
+
   const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
@@ -40,13 +42,9 @@ const TestimonialsEdit = () => {
 
   const onFormSubmit = async () => {
     setActiveButton(true);
-
-   
     const result = await axios.patch(
-      `${process.env.REACT_APP_URL}/updateTestimonialsatSpecificId/${params.id}`,
-      {
-        bodyData: editableData,
-      }
+      `${process.env.REACT_APP_URL}/updateTestimonialsatSpecificId/${params.id}`,editableData
+     
     );
 
     if (result.status === 200) {

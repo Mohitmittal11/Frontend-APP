@@ -11,6 +11,10 @@ body {
    padding: 20px 15px;
    background-color: rgb(215, 219, 215);
 }
+.editerror {
+   color: red;
+   margin-left: 5px;
+}
 
 .maincontainer .form-container .inputfield {
    display: block;

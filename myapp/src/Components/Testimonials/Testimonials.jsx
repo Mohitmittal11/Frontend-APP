@@ -30,6 +30,7 @@ const Testimonials = () => {
       bodyRequest
     );
     if (response.status === 200) {
+      setActiveButton(true);
       toast.success("Data Submitted Successfully", {
         position: "top-center",
       });

@@ -61,7 +61,7 @@ const ShowSubscription = () => {
         </div>
         <h2>Show SubScription</h2>
         <div className="imageGrid">
-          {subscriptionData.map((value) => (
+          {subscriptionData?.map((value) => (
             <div className="main-image-data">
               <div className="imageData">
                 <img id="imageshow" src={value.image} alt="subscriptionData" />
@@ -77,7 +77,7 @@ const ShowSubscription = () => {
                   <p className="refundabledata">(No Refundable)</p>
                 )}
 
-                {value.facilities.map((data) => (
+                {value.facilities?.map((data) => (
                   <p className="facilitiedData">{data}</p>
                 ))}
                 <div className="underlined-container"></div>

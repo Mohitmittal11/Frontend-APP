@@ -6,13 +6,54 @@
     display: block;
     overflow-x: auto;
 }
+
 .testimonial-spinner {
     display: flex;
     justify-content: center;
 }
+
 .testiminialDatalisting table {
     border-collapse: collapse;
     width: 100%;
+}
+
+#testimonialSearching {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+}
+
+.userSearch {
+    width: 240px;
+    height: 25px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-indent: 20px;
+    margin-right: 20px;
+}
+
+.userSearch::placeholder {
+    font-size: 15px;
+    font-style: italic;
+    color: gray;
+}
+
+.userSearch:focus {
+    outline: none;
+}
+
+.statusCheck {
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: rgb(43, 114, 228);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.statusCheck:active {
+    outline: none;
 }
 
 .testiminialDatalisting td,
@@ -109,6 +150,18 @@ th {
     background-color: blue;
 }
 
+@media screen and (max-width: 768px) and (min-width: 525px) {
+
+    #testimonialSearching {
+        justify-content: space-between;
+        padding: 0px 20px;
+    }
+
+    .statusCheck {
+        padding: 7px 8px;
+    }
+}
+
 @media screen and (max-width: 525px) and (min-width: 375px) {
     .pagination {
         margin: 20px 8px;
@@ -121,6 +174,20 @@ th {
 
     .pagination .previousdata {
         margin-right: 8px;
+    }
+
+    #testimonialSearching {
+        justify-content: space-between;
+        padding: 0px 10px;
+    }
+
+    .statusCheck {
+        padding: 5px 7px;
+        font-size: 15px;
+    }
+
+    .userSearch {
+        width: 180px;
     }
 }
 
@@ -139,7 +206,24 @@ th {
     .pagination .previousdata {
         margin-right: 8px;
         padding: 6px 6px;
+    }
 
+    #testimonialSearching {
+        justify-content: space-between;
+        padding: 0px 5px;
+    }
+
+    .statusCheck {
+        padding: 5px 5px;
+        font-size: 14px;
+    }
+
+    .userSearch {
+        width: 150px;
+    }
+
+    .userSearch::placeholder {
+        font-size: 13px;
     }
 
 }

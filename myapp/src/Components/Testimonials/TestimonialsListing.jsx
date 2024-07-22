@@ -11,6 +11,8 @@ const TestimonialsListing = () => {
   const [mutateLoader, setMutateLoader] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [allDocument, setAllDocuments] = useState();
+  const [statusSearchData, setStatusSearchData] = useState("");
+  const [usernameSearch, setUsernameSearch] = useState("");
 
   useEffect(() => {
     setMutateLoader(true);
@@ -21,6 +23,8 @@ const TestimonialsListing = () => {
           params: {
             limit: 5,
             page: activePage,
+            username: usernameSearch,
+            status: statusSearchData,
           },
         }
       );
@@ -30,9 +34,13 @@ const TestimonialsListing = () => {
         setMutateLoader(false);
       }
     };
+    let timeOut = null;
+    timeOut = setTimeout(() => {
+      getData();
+    }, 1000);
 
-    getData();
-  }, [activePage]);
+    return () => clearTimeout(timeOut);
+  }, [activePage, statusSearchData, usernameSearch]);
 
   const array = [];
   let i = 1;
@@ -74,8 +82,36 @@ const TestimonialsListing = () => {
     }
   };
 
+  const handleStatuschange = (e) => {
+    setStatusSearchData(e.target.value);
+  };
+  const handleUsernameChange = (e) => {
+    setUsernameSearch(e.target.value);
+  };
+
   return (
     <div className="testimoniallisting">
+      <div className="searchname">
+        <form id="testimonialSearching">
+          <input
+            onKeyDown={(e) => {
+              if (e.code === "Space") {
+                e.preventDefault();
+              }
+            }}
+            onChange={handleUsernameChange}
+            type="text"
+            className="userSearch"
+            placeholder="Search Username"
+          />
+          <select onChange={handleStatuschange} className="statusCheck">
+            <option value={""}>Search Status</option>
+            <option value={"Active"}>Active</option>
+            <option value={"InActive"}>InActive</option>
+          </select>
+        </form>
+      </div>
+
       <div className="testimonial-spinner">
         {mutateLoader && (
           <MutatingDots
@@ -104,7 +140,7 @@ const TestimonialsListing = () => {
               <th>Actions </th>
             </thead>
             <tbody>
-              {testimonialsData.map((value) => (
+              {testimonialsData?.map((value) => (
                 <tr>
                   <td>{value.username}</td>
                   <td>{value?.address?.place}</td>
@@ -165,7 +201,7 @@ const TestimonialsListing = () => {
         >
           {"<<"}
         </span>
-        {initialArray.map((value) => (
+        {initialArray?.map((value) => (
           <span
             className={`pagination ${
               activePage === value ? "testimonial_pagination" : "blue"
@@ -177,7 +213,7 @@ const TestimonialsListing = () => {
         ))}
         <span className="testimonialsdot">. . . . . .</span>
 
-        {lastArray.map((value) => (
+        {lastArray?.map((value) => (
           <span
             className={`pagination ${
               activePage === value ? "testimonial_pagination" : "blue"

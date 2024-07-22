@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +18,6 @@ const Bannerpage = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const [activebutton, setActiveButton] = useState(false);
-  const [dataofForm, setData] = useState();
 
   const handleImage = (e) => {
     e.preventDefault();
@@ -30,7 +29,6 @@ const Bannerpage = () => {
 
   const onFormSubmit = async (data) => {
     setActiveButton(true);
-
 
     const formData = new FormData();
 
@@ -97,9 +95,6 @@ const Bannerpage = () => {
                   value: /^[A-Za-z\s]+$/g,
                   message: "Please fill Only Characters",
                 },
-                // onChange: (e) => {
-                //   setData({ ...dataofForm, title: e.target.value });
-                // },
               })}
             />
             <p className="para">
@@ -184,19 +179,22 @@ const Bannerpage = () => {
               accept="image/*"
               {...register("image", {
                 required: "Image is Required",
-                // onChange: (e) => {
-                //   setData({ ...dataofForm, image: e.target.files[0] });
+                onChange: (e) => {
+                  setImageUrl(e.target.value);
+                  document.getElementById("removeImageData").style.display =
+                    "block";
+                  //   setData({ ...dataofForm, image: e.target.files[0] });
 
-                //   // const reader = new FileReader();
-                //   // reader.onloadend = function () {
-                //   //   setImageUrl(reader.result);
-                //   //   if (reader.result) {
-                //   //     document.getElementById("removeImageData").style.display =
-                //   //       "block";
-                //   //   }
-                //   // };
-                //   // reader.readAsDataURL(imageValue);
-                // },
+                  //   // const reader = new FileReader();
+                  //   // reader.onloadend = function () {
+                  //   //   setImageUrl(reader.result);
+                  //   //   if (reader.result) {
+                  //   //     document.getElementById("removeImageData").style.display =
+                  //   //       "block";
+                  //   //   }
+                  //   // };
+                  //   // reader.readAsDataURL(imageValue);
+                },
               })}
             />
             <p className="para">{errors?.image?.message}</p>

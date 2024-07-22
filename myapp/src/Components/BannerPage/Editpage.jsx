@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
-import "../../Style/bannerStyle/editpage.css"
+import "../../Style/bannerStyle/editpage.css";
 
 import axios from "axios";
 const Editpage = () => {
@@ -46,10 +46,10 @@ const Editpage = () => {
 
   const onFormSubmit = async () => {
     setActiveLoader(true);
-  
+
     const response = await axios.patch(
-      `${process.env.REACT_APP_URL}/updateData/${id}`,editableData
-     
+      `${process.env.REACT_APP_URL}/updateData/${id}`,
+      editableData
     );
 
     if (response.status === 200) {
@@ -82,15 +82,15 @@ const Editpage = () => {
               {...register("title", {
                 required: "*Title is Required",
                 pattern: {
-                  value: /^[a-zA-Z][a-zA-Z0-9]*$/g,
-                  message: "Please Fill only Characters",
+                  value: /^[A-Za-z\s]+$/g,
+                  message: "*Please Fill only Characters",
                 },
                 onChange: (e) => {
                   setEditableData({ ...editableData, title: e.target.value });
                 },
               })}
             />
-            <p>{errors?.title?.message}</p>
+            <p className="editerror">{errors?.title?.message}</p>
           </div>
           <div className="position">
             <input
@@ -112,13 +112,14 @@ const Editpage = () => {
                   });
                 },
                 pattern: {
-                  value: /[0-9]/g,
-                  message: "Please Fill only Numbers",
+                  value: /^[1-9]\d*$/,
+                  message:
+                    "*Please Enter Only Digits and First Digit Can't be Zero",
                 },
               })}
               placeholder="Enter Position"
             />
-            <p>{errors?.position?.message}</p>
+            <p className="editerror">{errors?.position?.message}</p>
           </div>
 
           <div className="main-status">
@@ -150,7 +151,7 @@ const Editpage = () => {
                 value={"InActive"}
                 name="status"
                 {...register("status", {
-                  required: "Please Choose one Option",
+                  required: "*Please Choose one Option",
                   onChange: (e) => {
                     setEditableData({
                       ...editableData,
@@ -161,7 +162,7 @@ const Editpage = () => {
               />
               <label for="inactive">inActive</label>
             </div>
-            <p>{errors?.status?.message}</p>
+            <p className="editerror">{errors?.status?.message}</p>
           </div>
 
           <div className="imageUpload">
